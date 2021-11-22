@@ -20,3 +20,17 @@ print(train_df['timestamp'].min())
 print(train_df['timestamp'].max())
 
 
+# %%
+print(train_df.shape)
+# %%
+test = train_df[train_df.Asset_ID == 1]
+# %%
+test.shape
+# %%
+train_df['timestamp'] = train_df['timestamp'].astype('datetime64[s]')
+
+# %%
+test = train_df[train_df.Asset_ID == 1]
+test[['timestamp','Count']].resample('D', on='timestamp').sum().shape
+# %%
+from time_series_split import PurgedGroupTimeSeriesSplit
